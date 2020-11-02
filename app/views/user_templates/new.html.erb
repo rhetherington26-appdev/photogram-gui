@@ -1,0 +1,29 @@
+<h1><%= @username%></h1>
+
+<div>ID</div>
+<div><%= @user.id%></div>
+
+<div>Edit User</div>
+<div><form action="/users/update/<%= @user.id%>">
+  <label id="user_edit">Username</label>
+  <input id="user_edit" type="text" name="username_edit" placeholder="Enter a username">
+  <button>Update user</button>
+  </form>
+</div>
+
+<h1>Own Photos</h1>
+
+<table border="1">
+  <tr>
+    <th>Image</th>
+    <th>Owner</th>
+    <th>Caption</th>
+    <th>Posted</th>
+  </tr>
+  <tr><% @user.own_photos.each do |photo|%>
+    <td><img src=<%= photo.image%>></td>
+    <td><%= photo.poster.username%></td>
+    <td><%= photo.caption%></td>
+    <td><%= photo.created_at%></td>
+  </tr><% end%>
+</table>
